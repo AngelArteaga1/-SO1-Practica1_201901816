@@ -7,10 +7,13 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+
+	//"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -39,7 +42,14 @@ type Response struct {
 var connectionString string
 
 func main() {
-	connectionString = "mongodb://mongoadmin:So1pass_2022@127.0.0.1:4000/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb"
+	/*err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error al cargar .env")
+	}*/
+	user := os.Getenv("MONGO_USERNAME")
+	password := os.Getenv("MONGO_PASSWORD")
+	host := os.Getenv("MONGO_HOST")
+	connectionString = "mongodb://" + user + ":" + password + "@" + host + "/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb"
 	request()
 }
 

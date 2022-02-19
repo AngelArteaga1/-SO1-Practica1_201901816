@@ -1,0 +1,19 @@
+docker run -d -p 4000:27017 -v /home/angel/Documentos/Proyectos/Sopes1/[SO1]Practica1_201901816/dockerVolumen:/data/db --name dbmongo \
+    -e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+    -e MONGO_INITDB_ROOT_PASSWORD=So1pass_2022 \
+    mongo
+
+mongo --username mongoadmin --password So1pass_2022 --authenticationDatabase admin 
+
+/home/angel/Documentos/Proyectos/Sopes1/[SO1]Practica1_201901816/dockerVolumen
+/home/angel/Documentos/Proyectos/Sopes1/[SO1]Practica1_201901816/dockerVolumen
+
+`mongodb://mongoadmin:So1pass_2022@3000:27017/db_practica1?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`
+CONNECTIONSTRING = mongodb://mongoadmin:So1pass_2022@127.0.0.1:4000/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+export GO111MODULE=off
+
+docker build -t angelarteaga/backend_p1_201901816 .
+docker run -d -p 5000:5000 -e MONGO_HOST=192.168.15.141:4000 --name backend_p1 angelarteaga/backend_p1_201901816
+
+docker build -t angelarteaga/frontend_p1_201901816 .
+docker run -d -p 3000:3000 --name frontend_p1 angelarteaga/frontend_p1_201901816

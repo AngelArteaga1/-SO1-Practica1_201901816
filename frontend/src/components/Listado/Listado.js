@@ -23,7 +23,6 @@ const Listado = (props) => {
     const getRecords = async() => {
         let recordsList = await request()
         setRecords(recordsList)
-        console.log(recordsList)
     }
 
     const request = async () => {
