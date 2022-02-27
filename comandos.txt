@@ -17,3 +17,5 @@ docker run -d -p 5000:5000 -e MONGO_HOST=192.168.15.141:4000 --name backend_p1 a
 
 docker build -t angelarteaga/frontend_p1_201901816 .
 docker run -d -p 3000:3000 --name frontend_p1 angelarteaga/frontend_p1_201901816
+
+docker run -d -p 80:80 -e CARNET=201901816 --name backend_c1 angelarteaga/corto1_201901816
